@@ -205,7 +205,7 @@ window.addEventListener('load', initVisitorStats);
 // 小紅書跳轉
 function goToXiaohongshu() {
     // 請將下方的網址替換為你複製的小紅書主頁連結
-    const myRedBookUrl = "https://www.xiaohongshu.com/user/profile/6701435530";
+    const myRedBookUrl = "https://xhslink.com/m/455a1qmKWef";
     
     // 在新視窗打開小紅書
     window.open(myRedBookUrl, "_blank");

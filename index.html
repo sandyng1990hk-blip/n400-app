@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>US Citizenship N-400 Practice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HOME SCREEN -->
+    <div id="home-screen">
+        <div class="header">
+            <h1>US Citizenship</h1>
+            <h2>N-400 Practice</h2>
+        </div>
+        
+        <div class="grid-menu">
+            <!-- Personal Info -->
+            <div class="menu-card" onclick="startSession('personal')">
+                <div class="menu-icon">📋</div>
+                <div class="menu-title">個人資料<br>問答練習</div>
+                <div class="menu-sub">Part 1 - 8</div>
+            </div>
+
+            <!-- Part 9 -->
+            <div class="menu-card" onclick="startSession('part9')">
+                <div class="menu-icon">⚖️</div>
+                <div class="menu-title">Part 9<br>問答練習</div>
+                <div class="menu-sub">Yes / No</div>
+            </div>
+
+            <!-- Bookmarks -->
+            <div class="menu-card light" onclick="showBookmarks()">
+                <div class="menu-icon">⭐️</div>
+                <div class="menu-title">收藏</div>
+                <div class="menu-sub">Bookmarks</div>
+            </div>
+
+            <!-- Glossary Entry -->
+            <div class="menu-card light" onclick="showGlossaryMenu()">
+                <div class="menu-icon">📖</div>
+                <div class="menu-title">名詞解釋</div>
+                <div class="menu-sub">Glossary</div>
+            </div>
+        </div>
+        <p style="margin-top: 40px; color: #8E8E93; font-size: 14px;">Select a mode to begin your AI interview simulation.</p>
+    </div>
+
+    <!-- GLOSSARY MENU SCREEN -->
+    <div id="glossary-menu-screen" class="hidden">
+        <div class="header">
+            <h2>名詞解釋類別</h2>
+        </div>
+        <div class="glossary-list">
+            <button class="btn glossary-item-btn" onclick="startSession('glossary', 1)">
+                <div><span class="icon">👤</span> 個人行為 (Personal Acts)</div>
+                <div>→</div>
+            </button>
+            <button class="btn glossary-item-btn" onclick="startSession('glossary', 2)">
+                <div><span class="icon">🚫</span> 違法行為 (Illegal Acts)</div>
+                <div>→</div>
+            </button>
+            <button class="btn glossary-item-btn" onclick="startSession('glossary', 3)">
+                <div><span class="icon">🏛️</span> 政府組織 (Government)</div>
+                <div>→</div>
+            </button>
+            <button class="btn glossary-item-btn" onclick="startSession('glossary', 4)">
+                <div><span class="icon">📍</span> 地方地點 (Places)</div>
+                <div>→</div>
+            </button>
+        </div>
+        <button class="btn rect-btn" style="margin-top: 40px;" onclick="exitGlossaryMenu()">返回主頁</button>
+    </div>
+
+    <!-- PRACTICE SCREEN (Shared by all modes) -->
+    <div id="practice-screen" class="hidden">
+        <div class="progress-indicator">
+            <span id="q-current">1</span> / <span id="q-total">30</span>
+        </div>
+        
+        <!-- Audio Animation -->
+        <div class="audio-wave-container" id="audio-anim">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+        </div>
+
+        <div class="officer-avatar">👮‍♂️</div>
+
+        <div class="question-box" id="q-box" onclick="toggleQuestionCard()">
+            <!-- Initial State: Hidden -->
+            <div id="q-hidden" class="click-hint">
+                <div style="font-size: 40px;">👁️</div>
+                <span>點擊查看問題</span>
+            </div>
+            <!-- Revealed State (Content injected by JS) -->
+            <div id="q-text" class="question-content hidden"></div>
+        </div>
+
+        <div class="controls-area">
+            <button class="btn round-btn" onclick="replayAudio()" title="重聽">🔊</button>
+            
+            <button class="btn main-action-btn" id="main-btn" onclick="handleMainAction()">
+                開始<br>面試
+            </button>
+            
+            <button class="btn round-btn" id="btn-star" onclick="toggleBookmark()" title="收藏">☆</button>
+        </div>
+
+        <div class="bottom-actions">
+            <button class="btn rect-btn" onclick="exitPractice()">🚪 退出</button>
+            <button class="btn rect-btn" onclick="restartSession()">🔄 重來</button>
+        </div>
+    </div>
+
+    <!-- BOOKMARKS SCREEN -->
+    <div id="bookmark-screen" class="hidden">
+        <div class="nav-bar">
+            <div class="nav-back" onclick="exitBookmarks()">←</div>
+            <div class="nav-title">收藏夾</div>
+        </div>
+        <div class="tabs">
+            <div class="tab active" id="tab-personal" onclick="switchTab('personal')">個人資料</div>
+            <div class="tab" id="tab-part9" onclick="switchTab('part9')">Part 9</div>
+            <div class="tab" id="tab-glossary" onclick="switchTab('glossary')">名詞解釋</div>
+        </div>
+        <div class="list-container" id="bookmark-list">
+            <!-- List items generated by JS -->
+        </div>
+    </div>
+<script src="app.js"></script>
+</body>
+</html>

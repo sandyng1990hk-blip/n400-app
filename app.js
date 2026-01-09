@@ -202,6 +202,14 @@ async function initVisitorStats() {
 // 確保在頁面加載後運行
 window.addEventListener('load', initVisitorStats);
 
+// 小紅書跳轉
+function goToXiaohongshu() {
+    // 請將下方的網址替換為你複製的小紅書主頁連結
+    const myRedBookUrl = "https://www.xiaohongshu.com/user/profile/6701435530";
+    
+    // 在新視窗打開小紅書
+    window.open(myRedBookUrl, "_blank");
+}
 
 // 洗牌
 function shuffleArray(array) {

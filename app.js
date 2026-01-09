@@ -389,7 +389,7 @@ function speakText(text, showAnim = false) {
 
             // 設置語音（如果有特定 ID 可以在此加入）
             const voices = synth.getVoices();
-            utterance.voice = voices[192] || voices[0];
+            utterance.voice = voices[142] || voices[0];
 
             // 動態效果控制
             if (showAnim) {

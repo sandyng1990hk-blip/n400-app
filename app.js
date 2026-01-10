@@ -274,20 +274,16 @@ function startSession(mode, catId = 0) {
 function handleMainAction() {
     const mainBtn = document.getElementById('main-btn');
 
-    // 判斷當前按鈕狀態
     if (mainBtn.innerHTML.includes("開始")) {
-        // --- 執行「開始面試」的邏輯 ---
-        console.log("面試開始");
-        startInterview(); // 調用你原本的開始函數
+        // 執行開始面試邏輯...
         
-        // 變更按鈕文字為「下一題」
+        // 切換文字
         mainBtn.innerHTML = "下一題";
         
-        // 如果你希望練習時顏色變低調，可以取消註釋下一行
-        // mainBtn.style.background = "#555"; 
+        // 移除彩色類別，按鈕會自動變回 CSS 定義的白色背景
+        mainBtn.classList.remove('colorful');
     } else {
-        // --- 執行「下一題」的邏輯 ---
-        showNextQuestion(); // 調用你原本的下一題函數
+        // 執行下一題邏輯...
     }
 }
 

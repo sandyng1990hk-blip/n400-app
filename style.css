@@ -320,24 +320,34 @@
             justify-content: center;
         }
         
-        .main-action-btn {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            color: var(--white);
-            font-size: 24px;
-            font-weight: bold;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 30px rgba(88, 86, 214, 0.5);
-            transition: transform 0.2s, background 0.3s;
-            line-height: 1.2;
-            text-align: center;
-        }
-        .main-action-btn:active { transform: scale(0.95); }
+        /* 主按鈕：藍紫色漸變效果 */
+.main-action-btn {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: none;
+    /* 藍紫色漸變：從亮藍到紫羅蘭 */
+    background: linear-gradient(135deg, #6e8efb, #a777e3); 
+    color: white !important; /* 強制文字為白色 */
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    /* 藍紫色光暈陰影 */
+    box-shadow: 0 8px 15px rgba(110, 142, 251, 0.4); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease; /* 平滑過渡 */
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /* 移除手機點擊時的藍色外框 */
+}
+
+/* 點擊時的微縮放反饋 */
+.main-action-btn:active {
+    transform: scale(0.92); /* 按下時縮小 */
+    box-shadow: 0 4px 8px rgba(110, 142, 251, 0.3); /* 陰影隨之變小 */
+    filter: brightness(0.9); /* 顏色稍微變深，增加受力感 */
+}
 
         .bottom-actions {
             display: flex;

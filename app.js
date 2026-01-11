@@ -285,6 +285,9 @@ function handleMainAction() {
     clearAudio();
     if (!isSessionStarted) {
         isSessionStarted = true;
+        // --- 點擊後移除藍色類名 ---
+        mainBtn.classList.remove('colorful');
+      
         updateMainButtonText();
         audioTimeout = setTimeout(() => playCurrentAudio(), 500);
     } else {

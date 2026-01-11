@@ -146,6 +146,9 @@ const glossaryData = [
             { word: "Anywhere in the world", phonetic: "/ˈeniwer/", chinese: "世界任何地方", def: "Means Every place.", cat: 4 },
 ];
 
+
+// 在 app.js 最上方加入這一行，強制讓 iOS 響應 CSS 的 :active 效果
+document.addEventListener("touchstart", function() {}, true);
 // --- STATE ---
 let currentMode = '';
 let glossaryCategory = 0;
@@ -246,34 +249,35 @@ function startSession(mode, catId = 0) {
 //主按鈕
 function handleMainAction() {
     const mainBtn = document.getElementById('main-btn');
-    
-    // --- 1. 強化縮放手感 (解決你說的縮放沒實現問題) ---
-    mainBtn.style.transform = "scale(0.88)";
-    setTimeout(() => {
-        mainBtn.style.transform = ""; 
-    }, 100);
 
-    // --- 2. 判斷邏輯 ---
+    // 檢查目前是否為「開始」狀態（即包含 colorful 類名）
     if (mainBtn.classList.contains('colorful')) {
-        // 【第一次點擊：從 開始面試 變成 我回答完了】
+        // --- 狀態 A -> B：從「開始面試」切換到「回答完了」 ---
         
-        // 執行開始面試的初始化邏輯 (例如：播放第一題音頻)
-        if (typeof startInterview === "function") startInterview(); 
-
-        // 核心動作：移除彩色類別 (變回白色)
+        // 1. 移除彩色背景（CSS 會自動讓它回到白色樣式）
         mainBtn.classList.remove('colorful');
         
-        // 變更文字為你需要的
+        // 2. 修改文字
         mainBtn.innerHTML = "我回答<br>完了";
         
-    } else {
-        // 【後續點擊：執行下一題邏輯】
-        if (typeof showNextQuestion === "function") showNextQuestion();
+        // 3. 執行原本開始面試的邏輯 (例如第一題播放)
+        // startFirstQuestion(); 
         
-        // 如果你希望文字一直保持「我回答完了」，這裡就不動
-        // 如果你希望變成「下一題」，可以改寫：
+    } else {
+        // --- 狀態 B：已經在面試中，點擊執行下一題 ---
+        
+        // 執行下一題邏輯
+        // showNextQuestion();
+        
+        // 如果需要文字在下一題時變回「下一題」，可以取消註釋下一行：
         // mainBtn.innerHTML = "下一題";
     }
+    
+    // 手動觸發一次縮放（雙重保險，解決某些手機 CSS :active 失效問題）
+    mainBtn.style.transform = "scale(0.9)";
+    setTimeout(() => {
+        mainBtn.style.transform = "";
+    }, 100);
 }
 
 // 重新開始

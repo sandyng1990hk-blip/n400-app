@@ -326,7 +326,7 @@
     height: 120px;
     border-radius: 50%;
     border: none;
-    background: linear-gradient(135deg, #6e8efb, #a777e3) !important; /* 確保練習時是白色 */
+    background: #ffffff !important; /* 確保練習時是白色 */
     color: #000000 !important;
     font-size: 18px;
     font-weight: bold;
@@ -342,7 +342,7 @@
 }
 
 /* 2. 初始樣式：藍紫漸變（當含有 .colorful 時） */
-button.main-action-btn.colorful {
+button#main-btn.main-action-btn.colorful {
     background: linear-gradient(135deg, #6e8efb, #a777e3) !important;
     color: #FFFFFF !important;
 }

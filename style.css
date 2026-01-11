@@ -342,10 +342,12 @@
 }
 
 /* 初始狀態：按鈕背景依然是白色，但文字和邊框變為藍色 */
-.main-action-btn.colorful {
-    background: white !important;
-    color: #5856D6 !important; /* iOS 藍紫色 */
-    border: 3px solid #5856D6 !important; /* 增加邊框讓它看起來不一樣 */
+button#main-btn.main-action-btn.colorful {
+    color: #5856D6 !important;
+    border: 3px solid #5856D6 !important;
+    background-color: #FFFFFF !important;
+    /* 確保縮放動畫 */
+    transition: transform 0.1s ease-in-out;
 }
 
 /* 點擊時的縮放效果 */

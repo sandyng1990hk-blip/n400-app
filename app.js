@@ -258,7 +258,13 @@ function restartSession() {
 // 退出練習
 function exitPractice() {
     clearAudio();
-    practiceScreen.classList.add('hidden');
+  // 1. 重置狀態變數，讓下次進入時能判定為「尚未開始」
+    isSessionStarted = false;
+  // 2. 恢復按鈕的藍色樣式類名
+    const mainBtn = document.getElementById('main-btn');
+    if (mainBtn) mainBtn.classList.add('colorful');
+    
+  practiceScreen.classList.add('hidden');
     if (currentMode === 'glossary') {
         glossaryMenuScreen.classList.remove('hidden');
     } else {

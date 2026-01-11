@@ -147,8 +147,7 @@ const glossaryData = [
 ];
 
 
-// 在 app.js 最上方加入這一行，強制讓 iOS 響應 CSS 的 :active 效果
-document.addEventListener("touchstart", function() {}, true);
+
 // --- STATE ---
 let currentMode = '';
 let glossaryCategory = 0;
@@ -244,40 +243,6 @@ function startSession(mode, catId = 0) {
 
     updateMainButtonText();
     loadQuestion(false);
-}
-
-//主按鈕
-function handleMainAction() {
-    const mainBtn = document.getElementById('main-btn');
-
-    // 檢查目前是否為「開始」狀態（即包含 colorful 類名）
-    if (mainBtn.classList.contains('colorful')) {
-        // --- 狀態 A -> B：從「開始面試」切換到「回答完了」 ---
-        
-        // 1. 移除彩色背景（CSS 會自動讓它回到白色樣式）
-        mainBtn.classList.remove('colorful');
-        
-        // 2. 修改文字
-        mainBtn.innerHTML = "我回答<br>完了";
-        
-        // 3. 執行原本開始面試的邏輯 (例如第一題播放)
-        // startFirstQuestion(); 
-        
-    } else {
-        // --- 狀態 B：已經在面試中，點擊執行下一題 ---
-        
-        // 執行下一題邏輯
-        // showNextQuestion();
-        
-        // 如果需要文字在下一題時變回「下一題」，可以取消註釋下一行：
-        // mainBtn.innerHTML = "下一題";
-    }
-    
-    // 手動觸發一次縮放（雙重保險，解決某些手機 CSS :active 失效問題）
-    mainBtn.style.transform = "scale(0.9)";
-    setTimeout(() => {
-        mainBtn.style.transform = "";
-    }, 100);
 }
 
 // 重新開始
